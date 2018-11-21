@@ -14,7 +14,15 @@ app.get("/", (req, res) => {
 });
 
 assignment7.on('connection', socket => {
-	console.log('user joined');
+	console.log('user connected');
+
+	socket.on("join", (username, search, message) => {
+		console.log('user joined', username, search, message);
+	})
+
+	socket.on("disconnect", () => {
+		console.log('user disconnected');
+	});
 });
 
 http.listen(port, () => {

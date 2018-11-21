@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
 import {Form, FormGroup, Label, Col, Button, Input} from 'reactstrap';
+import {sendInitialData} from './store/actions/actions';
+import {connect} from 'react-redux';
 import './App.scss';
+
+const mapDispatchToProps = dispatch => {
+	return {
+		sendInitialData: (username, search, message) => {
+			dispatch(sendInitialData(username, search, message));
+		}
+	}
+};
 
 class App extends Component {
 	constructor(props) {
@@ -39,11 +49,11 @@ class App extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		console.log('submitted!');
+		const {username, search, message} = this.state;
+		this.props.sendInitialData(username, search, message);
 	};
 
 	render() {
-		console.log(this.state);
 		const {username, search, message} = this.state;
 		const isEnabled = username.trim().length > 0 && search.trim().length > 0 && message.trim().length > 0;
 		return (
@@ -89,4 +99,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
