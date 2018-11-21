@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+
+  form {
+    padding: 20px;
+    width: 30%;
+    margin: auto;
+    border: 1px solid darkgrey;
+    border-radius: 10px;
+    label {
+      text-align: left;
+    }
+
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    button {
+      margin: 0 10px;
+    }
+  }
+}
+
