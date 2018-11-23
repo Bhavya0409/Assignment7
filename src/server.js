@@ -18,7 +18,7 @@ assignment7.on('connection', socket => {
 
 	socket.on("join", (username, search, message) => {
 		console.log('user joined', username, search, message);
-	})
+	});
 
 	socket.on("disconnect", () => {
 		console.log('user disconnected');
