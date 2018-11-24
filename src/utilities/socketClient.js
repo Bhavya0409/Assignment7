@@ -5,8 +5,6 @@ import {userJoined} from "../store/actions/actions";
 
 let socket = null;
 const dispatch = store.dispatch;
-
-console.log('bhavya', userJoined);
 // const getState = store.getState;
 
 export const openConnection = () => {
@@ -14,6 +12,7 @@ export const openConnection = () => {
 		socket = io(`${API_URL}/assignment7`);
 
 		socket.on("user-joined", newUsersObject => {
+			console.log(newUsersObject);
 			dispatch(userJoined(newUsersObject));
 		});
 

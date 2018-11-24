@@ -18,16 +18,11 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				currentUser: newUser,
-				// users: {
-				// 	...state.users,
-				// 	[action.id]: newUser
-				// }
 			};
 		case USER_JOINED:
-			const users = action.newUsersObject;
 			return {
 				...state,
-				users
+				users: action.newUsersObject
 			};
 		default:
 			return state;

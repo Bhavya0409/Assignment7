@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import Card from './Card';
+
+const mapStateToProps = state => {
+	return {
+		usersInfo: state.users
+	}
+};
 
 class Main extends Component {
 	render() {
+		const {usersInfo} = this.props;
+		const {users, currentUser} = usersInfo;
 		return (
-			<div>
-				<Card>
-					<CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-					<CardBody>
-						<CardTitle>Card title</CardTitle>
-						<CardSubtitle>Card subtitle</CardSubtitle>
-						<CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-						<Button>Button</Button>
-					</CardBody>
-				</Card>
+			<div className="row">
+				{Object.keys(users).map(userId => {
+					return <Card user={users[userId]} currentUser={userId === currentUser.id}/>;
+				})}
 			</div>
 		)
 	}
 };
 
-export default connect()(Main);
+export default connect(mapStateToProps)(Main);

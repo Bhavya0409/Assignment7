@@ -17,14 +17,11 @@ export const sendInitialData = (username, search, message) => {
 
 		await openConnection();
 
-		await joinChat(id, username, search, message);
+		joinChat(id, username, search, message);
 	}
 };
 
-export const test = 'test';
-
 export const userJoined = newUsersObject => {
-	console.log(newUsersObject);
 	return dispatch => {
 		dispatch({
 			type: USER_JOINED,
