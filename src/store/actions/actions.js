@@ -5,7 +5,7 @@ import {openConnection, joinChat} from '../../utilities/socketClient';
 
 export const sendInitialData = (username, search, message) => {
 	return async dispatch => {
-		console.log('in action');
+
 		dispatch({
 			type: SEND_INITIAL_DATA,
 			username,
@@ -14,6 +14,6 @@ export const sendInitialData = (username, search, message) => {
 
 		await openConnection();
 
-		joinChat(username, search, message);
+		await joinChat(username, search, message);
 	}
 };

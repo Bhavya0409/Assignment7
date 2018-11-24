@@ -5,16 +5,22 @@ const initialState = {
 		username: "",
 		id: null
 	},
-	users: []
+	connected: false,
+	users: {}
 };
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_INITIAL_DATA:
+			const newUser = {
+				username: action.username,
+				id: action.id
+			};
 			return {
 				...state,
-				currentUser: {
-					username: action.username,
-					id: action.id
+				currentUser: newUser,
+				users: {
+					...state.users,
+					[action.id]: newUser
 				}
 			};
 		default:
