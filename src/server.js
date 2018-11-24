@@ -10,6 +10,8 @@ const assignment7 = io.of("/assignment7");
 
 const {PIXABAY_API_BASE_URL} = require('./store/constants');
 
+const users = {};
+
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -19,13 +21,21 @@ app.get("/", (req, res) => {
 assignment7.on('connection', socket => {
 	console.log('user connected');
 
-	socket.on("join", async (username, search, message) => {
-		console.log('user joined', username, search, message);
+	socket.on("join", async (id, username, search, message) => {
+		console.log('user joined', id, username, search, message);
 
 		// WORKS:
 		// const response = await axios.get(`${PIXABAY_API_BASE_URL}&q=${encodeURIComponent(search)}`);
 		// const searchResults = response.data;
 		// console.log(searchResults);
+
+		users[id] = {
+			id,
+			username
+			// TODO pixabay data here
+		};
+
+		assignment7.emit("user-joined", users);
 	});
 
 	socket.on("disconnect", () => {

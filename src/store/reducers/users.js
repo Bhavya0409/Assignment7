@@ -1,4 +1,4 @@
-import {SEND_INITIAL_DATA} from "../constants";
+import {SEND_INITIAL_DATA, USER_JOINED} from "../constants";
 
 const initialState = {
 	currentUser: {
@@ -18,10 +18,16 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				currentUser: newUser,
-				users: {
-					...state.users,
-					[action.id]: newUser
-				}
+				// users: {
+				// 	...state.users,
+				// 	[action.id]: newUser
+				// }
+			};
+		case USER_JOINED:
+			const users = action.newUsersObject;
+			return {
+				...state,
+				users
 			};
 		default:
 			return state;
