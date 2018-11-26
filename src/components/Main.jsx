@@ -15,7 +15,7 @@ class Main extends Component {
 		return (
 			<div className="row">
 				{Object.keys(users).map(userId => {
-					return <Card user={users[userId]} currentUser={userId === currentUser.id}/>;
+					return <Card key={userId} user={users[userId]} currentUser={userId === currentUser.id}/>;
 				})}
 			</div>
 		)

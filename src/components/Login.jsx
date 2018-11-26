@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import {sendInitialData} from "../store/actions/actions";
 import {Form, FormGroup, Label, Col, Input, Button} from 'reactstrap';
 
+import './login.css';
+
 const mapDispatchToProps = dispatch => {
 	return {
 		sendInitialData: (username, search, message) => {

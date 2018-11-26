@@ -24,25 +24,16 @@ assignment7.on('connection', socket => {
 	socket.on("join", async (id, username, search, message) => {
 		console.log('user joined', id, username, search, message);
 
-		// WORKS:
-		// const response = await axios.get(`${PIXABAY_API_BASE_URL}&q=${encodeURIComponent(search)}`);
-		// const searchResults = response.data;
-		// const {total, hits} = searchResults;
-		// console.log(searchResults);
-		//
-		// users[id] = {
-		// 	id,
-		// 	username,
-		// 	total,
-		// 	img: hits[0].webformatURL
-		// };
+		const response = await axios.get(`${PIXABAY_API_BASE_URL}&q=${encodeURIComponent(search)}`);
+		const searchResults = response.data;
+		const {total, hits} = searchResults;
 
 		users[id] = {
 			id,
 			username,
-			total: 12456,
+			total,
+			img: hits[0].webformatURL,
 			search,
-			img: 'https://pixabay.com/get/ea32b90b28f6033ecd0b4405e0444094e572ffd41cb5124197f1c571a3_640.jpg',
 			message
 		};
 

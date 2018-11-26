@@ -23,7 +23,7 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node src/server.js\"",
+    "start": "concurrently \"react-scripts start\" \"node src/worker.js\"",
     "start-client": "react-scripts start",
     "start-server": "node src/server.js",
     "build": "react-scripts build",
